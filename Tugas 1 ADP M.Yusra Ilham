@@ -1,0 +1,32 @@
+program Menentukan_IP_Semester_1;
+var KD,FD,K,AD,PM,A,B,IP:Real;
+begin
+Writeln('nilai Kimia Dasar');
+ReadLn(KD);
+WriteLn('nilai Fisika Dasar');
+ReadLn(FD);
+WriteLn('nilai Kalkulus 1');
+ReadLn(K);
+WriteLn('nilai Analisis Data');
+ReadLn(AD);
+WriteLn('nilai Pengantar Matematika');
+ReadLn(PM);
+WriteLn('nilai Agama');
+ReadLn(A);
+WriteLn('nilai B.Indonesia');
+ReadLn(B);
+WriteLn('IP=',(KD+FD+K+AD+PM+A+B)/7);
+end.
+
+program menentukan_volume_dan_luas_permukaan_limas_segi_empat_beraturan;
+var S,LST,T:real;
+begin
+    WriteLn('sisi');
+    ReadLn(S);
+    WriteLn('tinggi');
+    ReadLn(T);
+    WriteLn('Luas sisi tegak');
+    ReadLn(LST);
+    WriteLn('Volume=',1/3*S*S*T);
+    WriteLn('Luas Permukaan=',S*S+4*LST)   
+end.
