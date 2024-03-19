@@ -1,0 +1,114 @@
+# Harga tiket Bus PT.ANS lintas Sumatra
+harga_tujuan = {
+    "Medan": 62000,
+    "Padang": 65000,
+    "Jambi": 76000,
+    "Pariaman": 87000,
+    "Talu": 51000,
+    "Pasaman": 66000
+}
+
+# Harga setiap kelas 
+harga_kelas = {
+    "Ekonomi": 10000,
+    "Bisnis": 20000,
+    "First": 30000
+}
+
+# Input tujuan
+print("Output 1: Bus PT. ANS lintas Sumatera")
+print("Tujuan")
+for index, tujuan in enumerate(harga_tujuan.keys(), start=1):
+    print(f"{index}. {tujuan}: Rp {harga_tujuan[tujuan]}")
+pilihan_tujuan = int(input("Tujuan yang dipilih (nomor): "))
+
+# Input kelas dan jumlah tiket
+print("\nOutput 2: Kelas (biaya tambahan)")
+for index, kelas in enumerate(harga_kelas.keys(), start=1):
+    print(f"{index}. {kelas} Class: Rp {harga_kelas[kelas]}")
+pilihan_kelas = int(input("Kelas yang dipilih (nomor): "))
+jumlah_tiket = int(input("Jumlah tiket: "))
+
+# Hitung total harga sebelum diskon
+total_sebelum_diskon = harga_tujuan[list(harga_tujuan.keys())[pilihan_tujuan - 1]] + (harga_kelas[list(harga_kelas.keys())[pilihan_kelas - 1]] * jumlah_tiket)
+
+# Hitung diskon
+diskon = 0
+if jumlah_tiket >= 3 and jumlah_tiket <= 5:
+    diskon = total_sebelum_diskon * 0.05
+elif jumlah_tiket > 5:
+    diskon = total_sebelum_diskon * 0.1
+
+# Hitung total harga setelah diskon
+total_setelah_diskon = total_sebelum_diskon - diskon
+
+# Output
+print("\nOutput 3:")
+print("Tujuan:", list(harga_tujuan.keys())[pilihan_tujuan - 1])
+print("Kelas:", list(harga_kelas.keys())[pilihan_kelas - 1])
+print("Jumlah tiket:", jumlah_tiket)
+print("Total: Rp", total_sebelum_diskon)
+print("Diskon: Rp", diskon)
+print("Total setelah diskon: Rp", total_setelah_diskon)
+
+
+
+program Tiket_Bus_PT_ANS_lintas_sumatra;
+
+var
+  harga_tujuan: array [1..6] of Integer = (56000, 89000, 77000, 68000, 91000, 53000);
+  harga_kelas: array [1..3] of Integer = (10000, 20000, 30000);
+  pilihan_tujuan, pilihan_kelas, jumlah_tiket: Integer;
+  total_sebelum_diskon, diskon, total_setelah_diskon: Integer;
+
+begin
+  // Output 1: Tampilkan daftar tujuan
+  writeln('Output 1: Bus PT. ANS lintas Sumatera');
+  writeln('Tujuan');
+  writeln('1. Medan: Rp ', harga_tujuan[1]);
+  writeln('2. Padang: Rp ', harga_tujuan[2]);
+  writeln('3. Jambi: Rp ', harga_tujuan[3]);
+  writeln('4. Pariaman: Rp ', harga_tujuan[4]);
+  writeln('5. Talu: Rp ', harga_tujuan[5]);
+  writeln('6. Pasaman: Rp ', harga_tujuan[6]);
+
+  // Input tujuan yang dipilih
+  write('Tujuan yang dipilih (nomor): ');
+  readln(pilihan_tujuan);
+
+  // Output 2: Tampilkan daftar kelas
+  writeln;
+  writeln('Output 2: Kelas (biaya tambahan)');
+  writeln('1. Ekonomi Class: Rp ', harga_kelas[1]);
+  writeln('2. Bisnis Class: Rp ', harga_kelas[2]);
+  writeln('3. First Class: Rp ', harga_kelas[3]);
+
+  // Input kelas yang dipilih dan jumlah tiket
+  write('Kelas yang dipilih (nomor): ');
+  readln(pilihan_kelas);
+  write('Jumlah tiket: ');
+  readln(jumlah_tiket);
+
+  // Hitung total harga sebelum diskon
+  total_sebelum_diskon := harga_tujuan[pilihan_tujuan] + (harga_kelas[pilihan_kelas] * jumlah_tiket);
+
+  // Hitung diskon
+  diskon := 0;
+  if (jumlah_tiket >= 3) and (jumlah_tiket <= 5) then
+    diskon := total_sebelum_diskon div 20
+  else if jumlah_tiket > 5 then
+    diskon := total_sebelum_diskon div 10;
+
+  // Hitung total harga setelah diskon
+  total_setelah_diskon := total_sebelum_diskon - diskon;
+
+  // Output 3: Tampilkan hasil
+  writeln;
+  writeln('Output 3:');
+  writeln('Tujuan: ', pilihan_tujuan);
+  writeln('Kelas: ', pilihan_kelas);
+  writeln('Jumlah tiket: ', jumlah_tiket);
+  writeln('Total: Rp ', total_sebelum_diskon);
+  writeln('Diskon: Rp ', diskon);
+  writeln('Total setelah diskon: Rp ', total_setelah_diskon);
+end.
