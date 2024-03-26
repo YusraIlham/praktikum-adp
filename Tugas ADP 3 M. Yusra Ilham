@@ -1,0 +1,26 @@
+Program Pascal
+def fibonacci(n):
+    fib = [1, 1]  
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])  
+    return fib
+
+def main():
+    while True:
+        try:
+            n = int(input("Masukkan nilai n (3-199, kecuali 100-109): "))
+            if (3 < n < 100) or (109 < n < 199):
+                break
+            else:
+                print("Nilai n harus dalam rentang (3,199) - (100,109)")
+        except ValueError:
+            print("Masukkan bilangan bulat yang valid.")
+
+    fib_series = fibonacci(n)  
+    sum_fib = sum(fib_series)  
+
+    print(f"Bilangan Fibonacci ke-{n} (fn): {fib_series[-1]}")
+    print(f"Jumlah dari f1, f2, ..., f{n} (Σfi): {sum_fib}")
+
+if __name__ == "__main__":
+    main()
