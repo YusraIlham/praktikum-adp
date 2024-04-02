@@ -1,0 +1,31 @@
+program LirikLagu;
+procedure LirikLagu(var text: string);
+var
+   Lirik: set of char = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+  
+  function pengganti(c: char): char;
+  begin
+    if c in lirik then
+      pengganti := 'i'
+    else
+      pengganti := c;
+  end;
+
+var
+  i: integer;
+begin
+  for i := 1 to Length(text) do
+    text[i] := (text[i]);
+end;
+
+var
+  lyrics: string;
+begin
+  writeln('Masukkan teks lirik lagu:');
+  readln(lyrics);
+
+  LirikLagu(lyrics);
+  
+  writeln('Teks lirik lagu dengan vokal ''i'':');
+  writeln(lyrics);
+end.
