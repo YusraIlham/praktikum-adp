@@ -1,0 +1,53 @@
+import math
+
+def f(x):
+    if x > 0:
+        return 3 * x ** 2 + 7 * x - 2
+    elif x < 0:
+        return 2 * x ** 2 - 5 * x - 4
+    else:
+        return None
+
+def g(x):
+    return f(x) ** 2 - math.sqrt(f(x))
+
+def h(x):
+    return f(x) * g(x)
+
+def main():
+    print("TABEL FUNGSI")
+    print("f(x) = 3x^2 + 7x - 2 jika x > 0")
+    print("     = 2x^2 - 5x - 4 jika x < 0")
+    print("g(x) = (f(x))^2 - √(f(x))")
+    print("h(x) = f(x) * g(x)")
+
+    n = int(input("Input banyak data n = "))
+    x_values = []
+    for i in range(n):
+        x = float(input(f"Input nilai x ke-{i+1} = "))
+        x_values.append(x)
+
+    print("\nNo\t x\t f(x)\t g(x)\t h(x)")
+    for i, x in enumerate(x_values, start=1):
+        fx = f(x)
+        gx = g(x)
+        hx = h(x)
+        print(f"{i}\t {x}\t {fx}\t {gx}\t {hx}")
+
+    while True:
+        choice = input("\nInput nilai x lagi? (Y/N): ").upper()
+        if choice == 'Y':
+            x = float(input("Input nilai x = "))
+            fx = f(x)
+            gx = g(x)
+            hx = h(x)
+            n += 1
+            print("\nNo\t x\t f(x)\t g(x)\t h(x)")
+            print(f"{n}\t {x}\t {fx}\t {gx}\t {hx}")
+        elif choice == 'N':
+            break
+        else:
+            print("Input tidak valid. Mohon masukkan Y atau N.")
+
+if __name__ == "__main__":
+    main()
