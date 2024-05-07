@@ -1,0 +1,35 @@
+def tampilkan_nilai(nilai):
+    print("Data Nilai Ujian:")
+    for nilai_mahasiswa in nilai:
+        print("\t".join(map(str, nilai_mahasiswa)))
+
+def hitung_rata2(nilai, mahasiswa):
+    print("\nNilai rata-rata Ujian Mahasiswa:")
+    for i, nilai_mahasiswa in enumerate(nilai):
+        nilai_rata2 = sum(nilai_mahasiswa) / len(nilai_mahasiswa)
+        print(f"Mahasiswa {mahasiswa[i]}: {nilai_rata2:.2f}")
+
+def nilai_tertinggi_dan_terendah(nilai, mahasiswa, matkul):
+    print("\nNilai Tertinggi dan Terendah setiap Mata Kuliah:")
+    for i, matkul in enumerate(matkul):
+        nilai_matkul = [nilai[j][i] for j in range(len(mahasiswa))]
+        nilai_tertinggi = max(nilai_matkul)
+        nilai_terendah = min(nilai_matkul)
+        nilai_mahasiswa_tertinggi = [mahasiswa[j] for j, nilai in enumerate(nilai_matkul) if nilai == nilai_tertinggi]
+        nilai_mahasiswa_terendah = [mahasiswa[j] for j, nilai in enumerate(nilai_matkul) if nilai == nilai_terendah]
+        print(f"{matkul}:")
+        print(f"\tNilai Tertinggi: {nilai_tertinggi}, Mahasiswa: {', '.join(nilai_mahasiswa_tertinggi)}")
+        print(f"\tNilai Terendah: {nilai_terendah}, Mahasiswa: {', '.join(nilai_mahasiswa_terendah)}")
+
+nilai = [
+    [85, 76, 92],
+    [88, 97, 85],
+    [78, 63, 72],
+    [91, 86, 95],
+    [92, 89, 77]
+]
+mahasiswa = ["Yusra", "Bayu", "Rizki", "Andi", "Vino"]
+matkul = ["Kalkulus1", "Pancasila", "Fisika"]
+tampilkan_nilai(nilai)
+hitung_rata2(nilai, mahasiswa)
+nilai_tertinggi_dan_terendah(nilai, mahasiswa, matkul)
