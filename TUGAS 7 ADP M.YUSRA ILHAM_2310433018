@@ -1,0 +1,70 @@
+suhu = int(input("Masukkan suhu dalam derajat: "))
+satuan = input("Masukkan satuan suhu (C/F/R/K): ") 
+def F_ke_C(F):
+    C = 5/9 * (F - 32)
+    return C
+def R_ke_C(R):
+    C = 5/4 * R 
+    return C
+def K_ke_C(K):
+    C = K - 273
+    return C
+def C_ke_F(C):
+    F = (9/5 * C) + 32 
+    return F
+def R_ke_F(R):
+    F = 9/4 * R + 32
+    return F
+def K_ke_F(K):
+    F = 9/5 * (K - 273) + 32
+    return F
+def C_ke_R(C):
+    R = 4/5 * C 
+    return R
+def F_ke_R(F):
+    R = 4/9 * (F - 32)
+    return R
+def K_ke_R(K):
+    R = 4/5 * (K - 273)
+    return R
+def C_ke_K(C):
+    K = C + 273
+    return K 
+def F_ke_K(F):
+    K = 5/9 * (F - 32) + 273 
+    return K
+def R_ke_K(R):
+    K = 5/4 * R + 273
+    return K
+def konversi_suhu(suhu, satuan):    
+    if satuan == 'C':
+        print(f"suhu {suhu} derajat Celsius dapat dikonversi menjadi:")
+        print("Satuan suhu // Derajat suhu")
+        print("===========================")
+        print("Reaumur     //", C_ke_R(suhu))
+        print("Fahrenheit  //", C_ke_F(suhu))
+        print("Kelvin      //", C_ke_K(suhu))
+    elif satuan == 'F':
+        print(f"suhu {suhu} derajat Fahrenheit dapat dikonversi menjadi:")
+        print("Satuan suhu // Derajat suhu")
+        print("===========================")
+        print("Celsius     //", F_ke_C(suhu))
+        print("Reaumur     //", F_ke_R(suhu))
+        print("Kelvin      //", F_ke_K(suhu))
+    elif satuan == 'R':
+        print(f"suhu {suhu} derajat Reaumur dapat dikonversi menjadi:")
+        print("Satuan suhu // Derajat suhu")
+        print("===========================")
+        print("Celsius     //", R_ke_C(suhu))
+        print("Fahrenheit  //", R_ke_F(suhu))
+        print("Kelvin      //", R_ke_K(suhu))
+    elif satuan == 'K':
+        print(f"suhu {suhu} derajar Kelvin dapat dikonversi menjadi:")
+        print("Satuan suhu // Derajat suhu")
+        print("===========================")
+        print("Celsius     //", K_ke_C(suhu))
+        print("Fahrenheit  //", K_ke_F(suhu))
+        print("Reaumur     //", K_ke_R(suhu))
+    else:
+        print("Suhu yang anda inputkan tidak sesuai.")
+konversi_suhu(suhu, satuan)
