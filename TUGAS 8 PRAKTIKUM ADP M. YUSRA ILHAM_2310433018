@@ -1,0 +1,62 @@
+print ("Tugas Modul 8 Shift 2")
+print ("Nama    : M. YUSRA ILHAM")
+print ("NIM     : 2310433018")
+print (" ")
+
+data = {
+    'Judul' : 'TURBO PASCAL',
+    'Pengarang' : 'JOGIYANTO',
+    'Penerbit' : 'ANDI',
+    'Tempat Terbit ' : 'YOGYAKARTA',
+    'Tahun Terbit ' : 2019
+}
+
+def simpan (data):
+    with open("data.txt","a") as file :
+        for key,value in data.items():
+            file.write(f"{value} ")
+
+def hapus (data):
+    with open("data.txt","r") as file:
+        line = file.readlines()
+    with open("data.txt","w") as file:
+        for i in line :
+            if i.split(" ")[0] != data :
+                file.write(i)
+
+def tampilkan (data):
+    with open("data.txt","a") as file :
+        for key, value in data.items():
+            file.write(f"{key:<20}:{value}\n")
+
+while True:
+   print ("1. Simpan")
+   print ("2. Hapus")
+   print ("3. Tampilkan")
+   print ("4. Keluar")
+
+   pilih = input ("Pilih Menu 1/2/3/4 : ")
+
+   if pilih == "1":
+       simpan(data)
+       print("Data Telah Disimpan.")
+       print (" ")
+
+   elif pilih == "2":
+       judul = input("Masukkan nama yang ingin dihapus : ")
+       hapus(judul)
+       print(f"Data {judul} Telah Dihapus.")
+       print (" ")
+
+   elif pilih == "3":
+      tampilkan(data)
+      print ("Data Telah Ditampilkan.")
+      print (" ")
+
+   elif pilih == "4":
+      print ("Keluar Dari Menu.")
+      print (" ")
+      break
+
+   else:
+      print("Masukkan Menu Valid.")
