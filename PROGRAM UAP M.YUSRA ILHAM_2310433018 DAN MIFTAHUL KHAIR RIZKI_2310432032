@@ -1,0 +1,121 @@
+import os
+import time
+from termcolor import cprint
+
+
+for i in range(3):
+        cprint(" SELAMAT DATANG DI TOKO YURI ELEKTRIK ",'white','on_red')
+        time.sleep(1)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
+        cprint(" SELAMAT DATANG DI TOKO YURI ELEKTRIK ",'white','on_yellow')
+        time.sleep(1)
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+        cprint(" SELAMAT DATANG DI TOKO YURI ELEKTRIK ",'white','on_blue')
+        time.sleep(1)
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+def pesan_produk():
+    data_produk = {
+        1: "Laptop",
+        2: "Mouse",
+        3: "keyboard",
+        4: "PC",
+        5: "HP",
+        6: "USB",
+        7: "Aerphone",
+        8: "Telvisi LED",
+        9: "Komputer",
+        10: "Charger",
+    }
+    daftar_harga = {
+        1: "30jt",
+        2: "50k",
+        3: "500k",
+        4: "1jt",
+        5: "3jt",
+        6: "150k",
+        7: "500k",
+        8: "50jt",
+        9: "35jt",
+        10: "50k",
+
+    }
+    cprint("\n============ List Produk ============",'black',"on_red")
+    for i in data_produk:
+        print(f"id produk : {i}, nama produk : {data_produk[i]}, harga produk : {daftar_harga[i]}")
+    
+    pilih_id = int(input("Pilih ID produk: "))
+    if pilih_id in data_produk:
+        nama = input("Nama: ")
+        alamat = input("Alamat: ")
+        nomor_hp = input("No. HP: ")
+        metode_pembayaran = input("Metode pembayaran(CASH/TRANSFER BANK/QRIS): ")
+        dict_trx = {
+            "nama": nama,
+            "alamat": alamat,
+            "no.hp": nomor_hp,
+            "produk": data_produk[pilih_id],
+            "harga": daftar_harga[pilih_id],
+            "metode pembayaran": metode_pembayaran,
+        }
+        return dict_trx
+    else:
+        print("ID produk tidak tersedia.")
+
+def lihat_data_pesanan():
+        with open("pesanan.txt", "r") as file:
+            cprint("=== Data Pesanan ===",'black',"on_blue")
+            for line in file:
+                print(line.strip())
+        print("Belum ada data pesanan.")
+
+def batalkan_pesanan(nama):
+        with open("pesanan.txt", "r") as file:
+            lines = file.readlines()
+        with open("pesanan.txt", "w") as file:
+            found = False
+            for line in lines:
+                if f"Nama: {nama}" in line:
+                    found = True
+                    print(f"Data dengan nama '{nama}' telah dihapus.")
+                else:
+                    file.write(line)
+            if not found:
+                print(f"Tidak ada data dengan nama '{nama}'.")
+        print("Belum ada data pesanan.")
+
+def simpan_ke_file(data):
+    with open("pesanan.txt", "a") as file:
+        file.write(f"Nama: {data['nama']}, Alamat: {data['alamat']}, No. HP: {data['no.hp']}, "
+                   f"Produk: {data['produk']}, Harga: {data['harga']}, Metode Pembayaran: {data['metode pembayaran']}\n")
+    print("Transaksi berhasil disimpan.")
+
+def main():
+    os.system('cls' if os.name == 'nt' else 'clear') 
+    while True:
+        cprint("\nSilakan Pilih Permintaan Anda",'black',"on_yellow")
+        print("1. Pesan Produk")
+        print("2. Lihat Data Pesanan")
+        print("3. Batalkan Pesanan")
+        print("4. Keluar")
+        pilihan = input("Pilih menu (1-4): ")
+
+        if pilihan == "1":
+            transaksi = pesan_produk()
+            if transaksi:
+                simpan_ke_file(transaksi)
+        elif pilihan == "2":
+            lihat_data_pesanan()
+        elif pilihan == "3":
+            nama = input("Masukkan nama yang ingin dihapus: ")
+            batalkan_pesanan(nama)
+        elif pilihan == "4":
+            print("Terima kasih telah menggunakan layanan kami.")
+            break
+        else:
+            print("Menu tidak tersedia. Silakan pilih menu yang sesuai.")
+
+if __name__ == "__main__":
+    main()
